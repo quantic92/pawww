@@ -42,23 +42,16 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <sql:query var="users" dataSource="jdbc/Sklep">
-            SELECT name, price FROM product
+        <sql:query var="products" dataSource="jdbc/Sklep">
+            SELECT productID, name, price FROM product
         </sql:query>
 
         <table border="1">
-            <!-- column headers -->
-            <tr>
-                <c:forEach var="columnName" items="${users.columnNames}">
-                    <th><c:out value="${columnName}"/></th>
-                    </c:forEach>
-            </tr>
             <!-- column data -->
-            <c:forEach var="row" items="${users.rowsByIndex}">
+            <c:forEach var="row" items="${products.rows}">
                 <tr>
-                    <c:forEach var="column" items="${row}">
-                        <td><c:out value="${column}"/></td>
-                    </c:forEach>
+                    <td><a href="Products/showProduct.jsp?id=${row.productID}"><c:out value="${row.name}"/></a></td>
+                    <td><c:out value="${row.price}"/></td>
                 </tr>
             </c:forEach>
         </table>
