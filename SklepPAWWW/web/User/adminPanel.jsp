@@ -11,7 +11,7 @@
 <sql:query var="query" dataSource="jdbc/Sklep">
     SELECT * FROM category
 </sql:query>
-    
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -47,10 +47,24 @@
                 </div>
 
                 <div class="dodawanie">
+                    Ilość: <input type="text" name="quantity" value="" size="37" />
+                </div>
+
+                <div class="dodawanie">
                     <input type="submit" value="Akceptuj" />
                 </div>
             </div>
 
+        </form>
+        Dodaj kategorie
+        <form action="../Products/insertProductCategoryToDb.jsp" method="POST">
+            <div class="blok">
+                <div class="dodawanie">
+                    Nazwa nowej kategorii:
+                    <input type="text" name="newCategory" value="" />
+                    <input type="submit" value="Dodaj" />
+                </div>
+            </div>
         </form>
     </body>
 </html>
