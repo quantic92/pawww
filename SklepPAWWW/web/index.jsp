@@ -5,7 +5,7 @@
     Created on : 2014-12-01, 18:54:27
     Author     : Mateusz
 --%>
-
+<jsp:include page="/masterpage.jsp" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -57,3 +57,4 @@
         </table>
     </body>
 </html>
+<jsp:include page="/masterpage2.jsp" />
