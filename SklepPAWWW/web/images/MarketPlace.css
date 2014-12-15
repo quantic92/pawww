@@ -34,9 +34,15 @@ a:hover {
 	padding-bottom: 0;
 	border-bottom: 2px solid #dbd5c5;
 }
+#productlist a{
+    font-family: 'Trebuchet MS', Tahoma, Sans-serif;
+    font-weight: Bold; 	
+    color: #333;
+    font-size: 130%;
+}
 
 /* headers */
-h1, h2, h3 {
+h1, h2, h3, h4 {
 	font-family: 'Trebuchet MS', Tahoma, Sans-serif;
 	font-weight: Bold; 	
 	color: #333;		
@@ -52,8 +58,11 @@ h2 {
 h3 {
 	font-size: 130%;	
 }
-
-h1, h2, h3, p {
+h4 {
+        font-size: 130%;	
+	font-weight: normal;
+}
+h1, h2, h3, h4, p {
 	padding: 10px;		
 	margin: 0;
 }
@@ -64,7 +73,7 @@ ul, ol {
 
 /* images */
 img {
-	background: #FAFAFA;
+	background: #EFEFEF;
    border: 1px solid #DCDCDC;
 	padding: 5px;
 }
@@ -140,7 +149,7 @@ tr.row-b {
 /* form elements */
 form {
 	margin:10px; padding: 0 5px;
-	background: #F5F5F5;	
+	//background: #F5F5F5;	
 }
 label {
 	display:block;
@@ -154,13 +163,14 @@ input {
 	color:#777;
 }
 textarea {
-	width:400px;
+	width:590px;
 	padding:2px;
 	font: normal 1em Verdana, sans-serif;
 	border:1px solid #eee;
-	height:100px;
+	height:400px;
 	display:block;
 	color:#777;
+        padding:10px;
 }
 input.button { 
 	font: bold 12px Arial, Sans-serif; 
@@ -171,7 +181,34 @@ input.button {
 	background: #e7e6e6 url(button.jpg) repeat-x;
 	border: 1px solid #dadada;
 }
-
+.logowanie
+{
+        position: relative;
+        left: 40px;
+        background-color: transparent;
+	border: none;	
+	margin: 0 5px 0 10px; 
+        padding: 8px 20px 15px 0;	
+	width: auto;
+        color: #838181;
+}
+.logowanie input.textbox { 
+	width: 100px;
+	color: #777; 
+	height: 12px;
+	padding: 2px;	
+	border: 1px solid #E5E5E5;
+	vertical-align: top;
+}
+.logowanie input.button { 
+	font: normal 10px Arial, Sans-serif;
+	height: 18px;
+	margin-left: 5px;
+	padding: 2px 3px; 
+	color: #333;
+	background: #e7e6e6 url(button.jpg) repeat-x;
+	border: 1px solid #dadada;
+}
 /* search form */
 .searchform {
 	background-color: transparent;
@@ -219,7 +256,7 @@ input.button {
 	background: #fff url(header-bg.jpg) repeat-y center top;
 	height: 35px;
 	width:910px;	
-	padding: 0;	
+	padding:0;	
 	color: #fff;	
 }
 
@@ -251,7 +288,7 @@ input.button {
 	width: 850px;
 	background: #fff url(header-photo.jpg) no-repeat center center;
 }
-#header-photo h1#logo-text a {
+#header-photo h1#logo-text a{
 	position: absolute;
 	margin: 0; padding: 0;
 	font: bold 48px 'Trebuchet MS', Arial, Sans-serif;
@@ -287,7 +324,7 @@ input.button {
 	background: #E4E4E4 url(nav.jpg) repeat-x;	
 	width: 850px;		
 	padding: 0;	margin: 0 0 0 30px;
-	height: 45px;
+	height: auto;
 	display: inline;
 	text-transform: uppercase;
 }
@@ -326,14 +363,20 @@ input.button {
 	margin: 10px 5px 0 200px;
 }
 
-#main h1 {
+#main h1{
 	margin: 10px 10px 0 10px;
 	font: normal 1.8em Georgia, "Times New Roman", Times, serif;
 	color: #444;
 	padding: 15px 0 2px 0px; 		
 	border-bottom: 1px solid #dadada;
 }
-
+#main h4{
+	margin: 10px 10px 0 10px;
+	font: normal 1.6em Georgia, "Times New Roman", Times, serif;
+	color: #444;
+	padding: 15px 0 2px 0px; 		
+	border-bottom: 1px solid #dadada;
+}
 /* Sidebar */	
 #sidebar {
 	float: left;
@@ -446,4 +489,36 @@ ul.sidemenu li a:hover {
 .post-footer a.readmore {
 	margin: 0 10px 0 5px;	
 }
-
+/* Product list */
+#productlist
+{
+	color: #666;	
+	margin: 20px 20px 20px 20px; 
+	width: auto;
+        height: 130px;
+	padding: 5px 5px;
+	text-align: inherit ;
+	background: #e8e7e7;
+        border: 1px solid #DCDCDC;
+}
+#img {
+	float: left;
+	width: 300px;	
+	margin-top: 10px;
+}
+#smallimg {
+	float: left;
+	width: auto;
+        padding-right: 20px;
+}
+#product
+{
+	color: #666;	
+	margin: 10px 10px 10px 10px; 
+	width: auto;
+        height: 70px;
+	padding: 20px 25px;
+	text-align: inherit ;
+	background: #f7f6f6;
+        border: 1px solid #DCDCDC;
+}

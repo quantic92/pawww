@@ -19,51 +19,48 @@
                 <a name="DodawanieProduktu"></a>
                 <h1>Dodaj nowy produkt</h1>
 
-                <div id="sidebar">
+                <div id="img">
 
-                    <img  style="height:164px;width:171px;" />
-                    <br />
-                    <br />
-                    <input type="file" name="image" style="height:21px;width:214px;" />
+                    <img src="../images/brakzdjecia.gif" style="height:240px;width:240px;" />
+
                 </div>
+                
+                <div id="main">
 
-                <div id="rightcolumn">
-
-                    <span id="defaultContent_Label1">Nazwa produktu</span>
-
-                    <br />
+                    <span id="defaultContent_Label1">Nazwa produktu:</span>
+                    <br/>
                     <input name="name" type="text" />
                     <br />
                     <br />
 
-                    <span id="defaultContent_Label2">Cena</span>
+                    <span id="defaultContent_Label2">Cena:</span>
                     <br />
                     <input name="price" type="text" />
                     <br />
-
+                    <br />
+                    <span id="defaultContent_Label3">Kategoria:</span>
+                    <br />
+                    <select name="nazwa">
+		    <option>Tu wpisz pierwszą możliwość</option>
+                    <option>Tu wpisz drugą możliwość</option>
+	           </select>
+                    <br/>
+                    <br/>
+                    <input type="file" name="image" style="height:21px;width:214px;" />
                 </div>
-
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <span>Opis produktu</span>
-                <textarea name="description" rows="50" cols="20"  style="height:357px;width:437px;">
-                </textarea>
+                <div>
+                <br/>
+                <br/>
+                <br/>
+                <h4>Opis produktu</h4>
+                <br/>
+                <textarea name="description" rows="50" cols="20">opis</textarea>
                 <br />
                 <br />
                 <input type="submit" value="Akceptuj" />
                 <br />
                 <br />
+                </div>
             </div>
         </form>
     </body>

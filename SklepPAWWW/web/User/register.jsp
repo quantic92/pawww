@@ -22,7 +22,7 @@
                 <h1>Jestes nowym klientem? Zarejestruj się!</h1>
                 <br/>
                 <br>Login:<br>
-                <INPUT TYPE ="text" NAME = "login">
+                <INPUT TYPE ="text" NAME = "login" >
                 <br/>
                 <br>Hasło:<br>
                 <INPUT TYPE ="text" NAME = "password">
