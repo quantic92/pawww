@@ -8,7 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
+<jsp:include page="../masterpage.jsp" />
 <sql:query var="klient" dataSource="jdbc/Sklep">
     SELECT * FROM user
     WHERE userID = ?
@@ -28,20 +28,32 @@
     </head>
 
     <body>
-        Imie: ${klient.rows[0].name}
-        NAzwisko: ${klient.rows[0].lastName}
-        Adres: ${klient.rows[0].address}
-        Miasto: ${klient.rows[0].city}
+        <div id="main">
+            <form>
+            <h1>Dane klienta:</h1>    
+        <p>Imie: ${klient.rows[0].name}</p>
+        <p>Nazwisko: ${klient.rows[0].lastName}</p>
+        <p>Adres: ${klient.rows[0].address}</p>
+        <p>Miasto: ${klient.rows[0].city}</p>
         <c:set var="total" value="0" />
+            </form>
+        
         <form action="orderProduct.jsp" method="POST">
+        <h1>Zamówienie</h1>
         <c:forEach var="product" items="${products.rows}" >
             <fmt:formatNumber var="sum" value="${product.price * product.quantity}" pattern="0.00"/>
-            <p>Nazwa: ${product.name}, ilosc: ${product.quantity}, Cena jednostkowa: ${product.price} Suma: ${sum} </p>
+            <p>Nazwa: ${product.name}</p><p>ilosc: ${product.quantity},</br> Cena jednostkowa: ${product.price}</br> Suma: ${sum} </p>
             <c:set var="total" value="${total + (product.price * product.quantity)}" />
         </c:forEach>
             <fmt:formatNumber var="totalRounded" value="${total}" pattern="0.00"/>
-            Total price: ${totalRounded}
-            <input type="submit" value="Kup" />
+            <h3>Łączna cena: ${totalRounded} PLN</h3>
+            
+            <h1>Wybór dostawy i płatności:</h1>
+            
+            </br>
+            <input type="submit" value="Zamawiam!" />
         </form>
+        </div>    
     </body>
 </html>
+<jsp:include page="../masterpage2.jsp" />
