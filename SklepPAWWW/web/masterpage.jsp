@@ -8,11 +8,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-    <sql:query var="user" dataSource="jdbc/Sklep">
-        SELECT * FROM user
-        WHERE userID = ?
-        <sql:param value="${sessionScope.loggedIn}"/>
-    </sql:query>
+<sql:query var="user" dataSource="jdbc/Sklep">
+    SELECT * FROM user
+    WHERE userID = ?
+    <sql:param value="${sessionScope.loggedIn}"/>
+</sql:query>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 
@@ -20,11 +20,11 @@
         <title>PS3-shop</title>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
         <link rel="stylesheet" href="/SklepPAWWW/images/MarketPlace.css" type="text/css" />
-    <c:if test="${not empty sessionScope.loggedIn}">
-        <c:if test="${user.rows[0].pinkMode == true}">
-            <link rel="stylesheet" href="/SklepPAWWW/images/MarketPlace2.css" type="text/css" />
+        <c:if test="${not empty sessionScope.loggedIn}">
+            <c:if test="${user.rows[0].pinkMode == true}">
+                <link rel="stylesheet" href="/SklepPAWWW/images/MarketPlace2.css" type="text/css" />
+            </c:if>
         </c:if>
-    </c:if>
         <script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.3/dojo/dojo.js"></script>
     </head>
     <body>
@@ -86,6 +86,12 @@
                     </form>
                     <h1>Kategorie</h1>
                     <ul class="sidemenu">
+                        <sql:query var="categories" dataSource="jdbc/Sklep">
+                            SELECT categoryID, name FROM category
+                        </sql:query>
+                            <c:forEach var="row" items="${categories.rows}">
+                                <li> <a href="Products/productlist.jsp?id=${row.categoryID}"><c:out value="${row.name}"/></a></li>
+                            </c:forEach>
                         <li><a href="http://www.free-css.com/">Home</a></li>
                         <li><a href="http://www.free-css.com/">Template Info</a></li>
                         <li><a href="http://www.free-css.com/">Sample Tags</a></li>
