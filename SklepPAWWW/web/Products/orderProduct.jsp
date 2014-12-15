@@ -11,9 +11,12 @@
 <%@ page import="java.util.Date" %>
 <c:set var="date" value="<%=new Date() %>" />
 <sql:update var="new" dataSource="jdbc/Sklep">
-    INSERT INTO zamowienie (userID, date) VALUES (?, ?)
+    INSERT INTO zamowienie (userID, date, orderType, paymentType, stateType) VALUES (?, ?, ?, ?, ?)
     <sql:param value="${sessionScope.loggedIn}" />
     <sql:param value="${date}" />
+    <sql:param value="${param.orderType}"/>
+    <sql:param value="${param.paymentType}"/>
+    <sql:param value="nowe"/>
 </sql:update>
 
 <sql:query var="basket" dataSource="jdbc/Sklep">
@@ -43,15 +46,30 @@
        <sql:param value="${sessionScope.loggedIn}"></sql:param>
     </sql:update> 
 
-
+<jsp:include page="../masterpage.jsp" />
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
-        Zamówienie zostalo przekazane do realizacji
+        <div id="main">    
+    <form action="/SklepPAWWW/" method="POST">
+        <h1>Zamówienie zostalo przekazane do realizacji</h1>
+        
+        <h3>Dane do przelewu:</h3>
+        
+        <p>PS3-shop
+            </br>    
+                    </br>
 
-        TU WSTAW JAKIES DANE FIRMY JAK MA PRZELEW WYGLADAC CZY COS NIE WIEM :D
+        Tytuł: Hajs sie zgadza
+        </br>
+        </br>
+        Koszt: ${param.total} PLN!</p>
+        <input type="submit" value="Powrót na stronę główną"/>
+    </form>
     </body>
+</div>
 </html>
+<jsp:include page="../masterpage2.jsp" />
