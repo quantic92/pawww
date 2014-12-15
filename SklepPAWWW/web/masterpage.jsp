@@ -90,13 +90,8 @@
                             SELECT categoryID, name FROM category
                         </sql:query>
                             <c:forEach var="row" items="${categories.rows}">
-                                <li> <a href="Products/productlist.jsp?id=${row.categoryID}"><c:out value="${row.name}"/></a></li>
+                                <li> <a href="/SklepPAWWW/Products/productlist.jsp?id=${row.categoryID}"><c:out value="${row.name}"/></a></li>
                             </c:forEach>
-                        <li><a href="http://www.free-css.com/">Home</a></li>
-                        <li><a href="http://www.free-css.com/">Template Info</a></li>
-                        <li><a href="http://www.free-css.com/">Sample Tags</a></li>
-                        <li><a href="http://www.free-css.com/">More Free Templates</a></li>
-                        <li><a href="http://www.free-css.com/">Premium Templates</a></li>
                     </ul>
                     <h1>Linki</h1>
                     <ul class="sidemenu">
