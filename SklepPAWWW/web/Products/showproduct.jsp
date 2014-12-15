@@ -21,7 +21,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form name="show">
+        <form name="show" action="addToBasket.jsp">
             <div id="main">
                 
                 <a name="DodawanieProduktu"></a>

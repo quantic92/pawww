@@ -8,11 +8,23 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
+    <sql:query var="user" dataSource="jdbc/Sklep">
+        SELECT * FROM user
+        WHERE userID = ?
+        <sql:param value="${sessionScope.loggedIn}"/>
+    </sql:query>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+
     <head>
         <title>PS3-shop</title>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
         <link rel="stylesheet" href="/SklepPAWWW/images/MarketPlace.css" type="text/css" />
+    <c:if test="${not empty sessionScope.loggedIn}">
+        <c:if test="${user.rows[0].pinkMode == true}">
+            <link rel="stylesheet" href="/SklepPAWWW/images/MarketPlace2.css" type="text/css" />
+        </c:if>
+    </c:if>
         <script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.3/dojo/dojo.js"></script>
     </head>
     <body>
@@ -36,7 +48,7 @@
                             <text>Zalogowany jako ${login.rows[0].name}</text>
                             <input type="submit" value="wyloguj"  class="button"/>
                         </form>
-                                  
+
                     </c:if>
                 </div>
                 <div id="header-links">
@@ -51,10 +63,10 @@
                 <ul>
                     <li id="current"><a href="/SklepPAWWW/">Home</a></li>
                     <li><a href="2-columns.php">Kategorie</a></li>
-                    <c:if test="${sessionScope.loggedIn!=null}"> 
-                    <li><a href="/SklepPAWWW/Products/basket.jsp">Koszyk</a></li>
-                    <li><a href="/SklepPAWWW/User/accountSettings.jsp">Ustawienia Konta</a></li>
-                    </c:if>
+                        <c:if test="${sessionScope.loggedIn!=null}"> 
+                        <li><a href="/SklepPAWWW/Products/basket.jsp">Koszyk</a></li>
+                        <li><a href="/SklepPAWWW/User/accountSettings.jsp">Ustawienia Konta</a></li>
+                        </c:if>
                     <li><a href="/SklepPAWWW/">O nas</a></li>
                     <li>
                         <c:if test="${sessionScope.isAdmin == true}">

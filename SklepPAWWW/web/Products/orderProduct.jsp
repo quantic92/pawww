@@ -30,11 +30,18 @@
     
 <c:forEach var="item" items="${basket.rows}">
     <sql:update var="item" dataSource="jdbc/Sklep">
-       INSERT INTO OrderBasket (basketID, orderID) VALUES (?, ?)
-       <sql:param value="${item.basketID}"></sql:param>
+       INSERT INTO OrderProduct (productID, orderID) VALUES (?, ?)
+       <sql:param value="${item.productID}"></sql:param>
        <sql:param value="${zamowienie.rows[0].orderID}"/>
     </sql:update> 
 </c:forEach>
+       
+
+    <sql:update var="item" dataSource="jdbc/Sklep">
+       DELETE FROM basket
+       WHERE userID = ?
+       <sql:param value="${sessionScope.loggedIn}"></sql:param>
+    </sql:update> 
 
 
 <html>
