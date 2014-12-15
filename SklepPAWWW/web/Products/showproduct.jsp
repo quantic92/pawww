@@ -30,7 +30,7 @@
 
                 <div id="img">
 
-                    <img src="../images/brakzdjecia.gif"  style="height:240px;width:240px;" />
+                    <img src="${query.rows[0].imagePath}"  style="height:240px;width:240px;" />
 
                 </div>
 

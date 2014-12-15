@@ -50,7 +50,7 @@
             <!-- column data -->
             <c:forEach var="row" items="${products.rows}">
                 <tr>
-                    <td><a href="Products/showProduct.jsp?id=${row.productID}"><c:out value="${row.name}"/></a></td>
+                    <td><a href="Products/showproduct.jsp?id=${row.productID}"><c:out value="${row.name}"/></a></td>
                     <td><c:out value="${row.price}"/></td>
                 </tr>
             </c:forEach>

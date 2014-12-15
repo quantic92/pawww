@@ -18,13 +18,14 @@
     </head>
     <body>
     <sql:update var="result" dataSource="jdbc/Sklep">
-        INSERT INTO product (name, description, price, quantity, categoryID) VALUES (?, ?, ?, ?, ?)
+        INSERT INTO product (name, description, price, quantity, categoryID, imagePath) VALUES (?, ?, ?, ?, ?, ?)
 
         <sql:param value="${param.name}" />
         <sql:param value="${param.description}" />
         <sql:param value="${param.price}" />
         <sql:param value="${param.quantity}" />
         <sql:param value="${param.category}" />
+        <sql:param value="/SklepPAWWW/images/products/${param.image}" />
     </sql:update>
         <c:redirect url="/"/>
 

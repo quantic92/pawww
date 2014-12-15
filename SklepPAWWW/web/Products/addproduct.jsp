@@ -28,7 +28,7 @@
 
                 <div id="img">
 
-                    <img src="../images/brakzdjecia.gif" style="height:240px;width:240px;" />
+                    <img id="obraz" name="obrazek" src="../images/brakzdjecia.gif" style="height:240px;width:240px;" />
 
                 </div>
                 
@@ -54,7 +54,7 @@
                     </select>
                     <br/>
                     <br/>
-                    <input type="file" name="image" style="height:21px;width:214px;" />
+                    <input type="file" name="image" id="fileSelector" style="height:21px;width:214px;" />
                 </div>
                 <div>
                                                     <div class="dodawanie">
@@ -78,4 +78,19 @@
         </form>
     </body>
 </html>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script type="text/javascript">
+        $("#fileSelector").change( function() { 
+            var text = $('input[type=file]').val();
+            if (text.substring(text.length - 4) === ".jpg") {
+                var dir = "Images/" + text;
+                $("#obraz").attr("src", "/SklepPAWWW/images/products/" + text);
+            }
+    });
+
+</script>
+
+
 <jsp:include page="../masterpage2.jsp" />
