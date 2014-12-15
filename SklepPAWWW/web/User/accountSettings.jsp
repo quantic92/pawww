@@ -20,15 +20,27 @@
         <title>JSP Page</title>
     </head>
     <body>
-        
-        
-        
+
+
+
         <div id="main">
-            <c:if test="${user.rows[0].isAdmin == true}">
-            <h1> Panel administratora: </h1>
-            <form action="adminPanel.jsp" method="POST">
-                <input type="submit" value="Wejdz">
+            <form method="POST" action="changeSkin.jsp">
+                <c:if test="${user.rows[0].pinkMode == true}">
+                    <input type="radio" name="skin" value="0"> Standardowy
+                    <input type="radio" name="skin" value="1" checked> Rozowy
+                </c:if>
+                <c:if test="${user.rows[0].pinkMode == false}">
+                    <input type="radio" name="skin" value="0" checked> Standardowy
+                    <input type="radio" name="skin" value="1" > Rozowy
+                </c:if>
+                    <input type="submit" value="Zatwierdz" />
             </form>
+
+            <c:if test="${user.rows[0].isAdmin == true}">
+                <h1> Panel administratora: </h1>
+                <form action="adminPanel.jsp" method="POST">
+                    <input type="submit" value="Wejdz">
+                </form>
             </c:if>
             <h1> Aktualizuj dane: </h1>
             <form action="updateUserData.jsp" method="POST">
@@ -55,8 +67,8 @@
                     <input type="submit" value="Zatwierdź" />
                 </div>
             </form>
-   
-        
+
+
             <h1>Zmień hasło:</h1>
             <form action="updateUserData.jsp">
 
@@ -81,6 +93,6 @@
 
                 </form>
         </div>
-</body>
+    </body>
 </html>
 <jsp:include page="../masterpage2.jsp" />
