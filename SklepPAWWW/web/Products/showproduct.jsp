@@ -4,8 +4,17 @@
     Author     : QuAntic
 --%>
 <jsp:include page="../masterpage.jsp" />
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<sql:query var="query" dataSource="jdbc/Sklep">
+    SELECT * FROM product
+    WHERE productID = ?
+    <sql:param value="${param.id}"></sql:param>
+</sql:query>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,7 +26,7 @@
             <div id="main">
                 
                 <a name="DodawanieProduktu"></a>
-                <h1>Nazwa Produktu</h1>
+                <h1>${query.rows[0].name}</h1>
 
                 <div id="img">
 
@@ -30,17 +39,19 @@
 
                     <span id="defaultContent_Label1">Cena:</span>
                     <br />
-                    <span id="defaultContent_Label2">'Cena z bazy'</span>
+                    <span id="defaultContent_Label2">${query.rows[0].price}</span>
                     <br />
                     <br />
                     <span id="defaultContent_Label3">Dostępność:</span>
                     <br />
-                    <span id="defaultContent_Label3">'Dostępne lub nie'</span>
+                    <span id="defaultContent_Label3">${query.rows[0].quantity}</span>
                     <br />
                     <br/>
                     <span id="defaultContent_Label5">Ilość:</span>
                     <br />
-                    <input name="price" type="text" />
+                    <input name="quantity" type="text" />
+                    
+                    <input type="hidden" name="product" value="${query.rows[0].productID}"
                 </div>
                 <br />
                 <br />
@@ -50,8 +61,7 @@
                 <br />
                 <h4>Opis produktu:</h4>
                 <br />
-                <textarea name="description" rows="50" cols="20" disabled="disabled">
-                </textarea>
+                    ${query.rows[0].description}
                 <br/>
                 <br/>
              <input type="submit" value="Dodaj do koszyka" />
