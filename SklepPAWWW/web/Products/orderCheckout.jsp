@@ -42,14 +42,24 @@
         <h1>Zamówienie</h1>
         <c:forEach var="product" items="${products.rows}" >
             <fmt:formatNumber var="sum" value="${product.price * product.quantity}" pattern="0.00"/>
-            <p>Nazwa: ${product.name}</p><p>ilosc: ${product.quantity},</br> Cena jednostkowa: ${product.price}</br> Suma: ${sum} </p>
+            <p>Nazwa: ${product.name}</p><p>Ilość: ${product.quantity}</br> Cena jednostkowa: ${product.price}</br> Suma: ${sum} </p>
             <c:set var="total" value="${total + (product.price * product.quantity)}" />
         </c:forEach>
             <fmt:formatNumber var="totalRounded" value="${total}" pattern="0.00"/>
             <h3>Łączna cena: ${totalRounded} PLN</h3>
             
             <h1>Wybór dostawy i płatności:</h1>
-            
+            <h3>Rodzaj dostawy:</h3>
+            <select name="orderType" id="orderType">
+                <option value="kurier" selected="true">Kurier</option>
+                <option value="paczkomat">Paczkomat</option>
+                <option value="osobisty">Odbiór osobisty</option>
+            </select>
+            <select name="paymentType" id="orderType">
+                <option value="kurier" selected="true">Przelew bankowy</option>
+                <option value="paczkomat">Płatność gotówką</option>
+                <option value="osobisty">Przelew elektroniczny</option>
+            </select>
             </br>
             <input type="submit" value="Zamawiam!" />
         </form>
