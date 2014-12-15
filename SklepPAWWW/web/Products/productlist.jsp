@@ -11,7 +11,7 @@
 
 <sql:query var="products" dataSource="jdbc/Sklep">
     SELECT * FROM product
-    WHERE categoryID = ?
+    WHERE categoryID = ? AND quantity > 0
     <sql:param value="${param.id}"></sql:param>
 </sql:query>
 
