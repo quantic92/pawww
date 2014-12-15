@@ -21,7 +21,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        
         <form name="show">
             <div id="main">
                 
@@ -64,7 +63,10 @@
                     ${query.rows[0].description}
                 <br/>
                 <br/>
-             <input type="submit" value="Dodaj do koszyka" />
+                <c:if test="${not empty sessionScope.loggedIn}">
+                    <input type="submit" value="Dodaj do koszyka" />
+                </c:if>
+             
                 <br/>
                 <br/>
              </div>  
