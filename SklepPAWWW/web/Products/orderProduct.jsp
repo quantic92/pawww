@@ -9,7 +9,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ page import="java.util.Date" %>
-<c:set var="date" value="<%=new Date() %>" />
+<c:set var="date" value="<%=new Date()%>" />
 <sql:update var="new" dataSource="jdbc/Sklep">
     INSERT INTO zamowienie (userID, date, orderType, paymentType, stateType) VALUES (?, ?, ?, ?, ?)
     <sql:param value="${sessionScope.loggedIn}" />
@@ -25,26 +25,39 @@
     <sql:param value="${sessionScope.loggedIn}" />
 </sql:query>
 
-    <sql:query var="zamowienie" dataSource="jdbc/Sklep">
-        SELECT * FROM zamowienie
-        WHERE userID = ?
-        <sql:param value="${sessionScope.loggedIn}" />
-    </sql:query>
-    
-<c:forEach var="item" items="${basket.rows}">
-    <sql:update var="item" dataSource="jdbc/Sklep">
-       INSERT INTO OrderProduct (productID, orderID) VALUES (?, ?)
-       <sql:param value="${item.productID}"></sql:param>
-       <sql:param value="${zamowienie.rows[0].orderID}"/>
-    </sql:update> 
-</c:forEach>
-       
+<sql:query var="zamowienie" dataSource="jdbc/Sklep">
+    SELECT * FROM zamowienie
+    WHERE userID = ?
+    <sql:param value="${sessionScope.loggedIn}" />
+</sql:query>
 
-    <sql:update var="item" dataSource="jdbc/Sklep">
-       DELETE FROM basket
-       WHERE userID = ?
-       <sql:param value="${sessionScope.loggedIn}"></sql:param>
+<c:forEach var="item" items="${basket.rows}">
+    <sql:update dataSource="jdbc/Sklep">
+        INSERT INTO OrderProduct (productID, orderID) VALUES (?, ?)
+        <sql:param value="${item.productID}"></sql:param>
+        <sql:param value="${zamowienie.rows[0].orderID}"/>
     </sql:update> 
+    <sql:query var="currentProduct" dataSource="jdbc/Sklep">
+        SELECT * FROM product
+        WHERE productID = ?
+        <sql:param value="${item.productID}" />
+    </sql:query>
+    <sql:update var="item" dataSource="jdbc/Sklep">
+        UPDATE product
+        SET quantity = ?
+        WHERE productID = ?
+        <sql:param value="${currentProduct.rows[0].quantity - item.quantity}" />
+        <sql:param value="${currentProduct.rows[0].productID}"/>
+    </sql:update>    
+
+</c:forEach>
+
+
+<sql:update var="item" dataSource="jdbc/Sklep">
+    DELETE FROM basket
+    WHERE userID = ?
+    <sql:param value="${sessionScope.loggedIn}"></sql:param>
+</sql:update> 
 
 <jsp:include page="../masterpage.jsp" />
 <html>

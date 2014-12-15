@@ -1,20 +1,18 @@
 <%-- 
-    Document   : productlist
-    Created on : 2014-12-13, 20:34:45
-    Author     : QuAntic
+    Document   : search
+    Created on : 2014-12-15, 23:03:54
+    Author     : Mateusz
 --%>
-<jsp:include page="../masterpage.jsp" />
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 
 <sql:query var="products" dataSource="jdbc/Sklep">
     SELECT * FROM product
-    WHERE categoryID = ? AND quantity > 0
-    <sql:param value="${param.id}"></sql:param>
+    WHERE name LIKE '%${param.search_query}%' OR description LIKE '%${param.search_query}%' 
 </sql:query>
-
+    
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -22,7 +20,6 @@
     </head>
     <body>
         <div id="main">
-            <h1>Kategoria / Podkategoria ...</h1>
             <div id="productlist">
                 <c:forEach var="row" items="${products.rows}">
                 <div id="smallimg">
@@ -41,4 +38,3 @@
         <div/>
     </body>
 </html>
-<jsp:include page="../masterpage2.jsp" />

@@ -78,12 +78,13 @@
             <div id="content-wrap" class="two-col"  >
                 <div id="sidebar">
                     <h1>Wyszukiwarka</h1>
-                    <form action="http://www.free-css.com/" class="searchform">
+                    <form action="/SklepPAWWW/Products/search.jsp" class="searchform">
                         <p>
                             <input name="search_query" class="textbox" type="text" />
-                            <input name="search" class="button" value="Szukaj" type="submit" />
+                            <input class="button" value="Szukaj" type="submit" />
                         </p>
                     </form>
+                    <a href="/SklepPAWWW/Products/advancedSearch.jsp">Wyszukiwanie zaawansowane</a>
                     <h1>Kategorie</h1>
                     <ul class="sidemenu">
                         <sql:query var="categories" dataSource="jdbc/Sklep">
