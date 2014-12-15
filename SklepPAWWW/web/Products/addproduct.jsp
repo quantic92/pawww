@@ -5,7 +5,14 @@
 --%>
 <jsp:include page="../masterpage.jsp" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <!DOCTYPE html>
+
+<sql:query var="query" dataSource="jdbc/Sklep">
+    SELECT * FROM category
+</sql:query>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -29,37 +36,43 @@
 
                     <span id="defaultContent_Label1">Nazwa produktu:</span>
                     <br/>
-                    <input name="name" type="text" />
+                    <input type="text" name="name" value="" size="35" />
                     <br />
                     <br />
 
                     <span id="defaultContent_Label2">Cena:</span>
                     <br />
-                    <input name="price" type="text" />
+                    <input type="text" name="price" value="" size="37" />
                     <br />
                     <br />
                     <span id="defaultContent_Label3">Kategoria:</span>
                     <br />
-                    <select name="nazwa">
-		    <option>Tu wpisz pierwszą możliwość</option>
-                    <option>Tu wpisz drugą możliwość</option>
-	           </select>
+                    <select name="category">
+                        <c:forEach var="kat" items="${query.rows}">
+                            <option value="${kat.categoryID}" >${kat.name}</option>
+                        </c:forEach>
+                    </select>
                     <br/>
                     <br/>
                     <input type="file" name="image" style="height:21px;width:214px;" />
                 </div>
                 <div>
+                                                    <div class="dodawanie">
+                    Ilość: <input type="text" name="quantity" value="" size="37" />
+                </div>
                 <br/>
                 <br/>
                 <br/>
                 <h4>Opis produktu</h4>
                 <br/>
-                <textarea name="description" rows="50" cols="20">opis</textarea>
+                <textarea name="description" rows="6" cols="29">
+                    </textarea>
                 <br />
                 <br />
                 <input type="submit" value="Akceptuj" />
                 <br />
                 <br />
+
                 </div>
             </div>
         </form>
