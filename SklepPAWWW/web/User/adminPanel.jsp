@@ -20,44 +20,16 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Dodaj nowy przedmiot:</h1>
-
-        <form action="../Products/insertProductToDb.jsp" method="POST">
-            <div class="blok">
-                <div class="dodawanie">
-                    Kategoria: <select name="category">
-                        <c:forEach var="kat" items="${query.rows}">
-                            <option value="${kat.categoryID}" >${kat.name}</option>
-                        </c:forEach>
-                    </select>
-                </div>
-
-
-                <div class="dodawanie">
-                    Nazwa: <input type="text" name="name" value="" size="35" />
-                </div>
-
-                <div class="dodawanie">
-                    Opis:
-                    <textarea name="description" rows="6" cols="29">
-                    </textarea>
-                </div>
-
-                <div class="dodawanie">
-                    Cena: <input type="text" name="price" value="" size="37" />
-                </div>
-
-                <div class="dodawanie">
-                    Ilość: <input type="text" name="quantity" value="" size="37" />
-                </div>
-
-                <div class="dodawanie">
-                    <input type="submit" value="Akceptuj" />
-                </div>
-            </div>
-
+        <div id="main">
+        <h1>Dodaj produkt</h1>
+        <form action="../Products/addproduct.jsp" method="POST">
+                <input type="submit" value="Dodaj">
         </form>
-        Dodaj kategorie
+        <h1>Edytuj produkty</h1> 
+        <form>
+            
+        </form>
+        <h1>Dodaj kategorie</h1>
         <form action="../Products/insertProductCategoryToDb.jsp" method="POST">
             <div class="blok">
                 <div class="dodawanie">
@@ -67,6 +39,11 @@
                 </div>
             </div>
         </form>
+        <h1>Edytuj kategorie</h1>
+        <form action="#" method="POST">
+            
+        </form>    
+        </div>
     </body>
 </html>
 <jsp:include page="../masterpage2.jsp" />
