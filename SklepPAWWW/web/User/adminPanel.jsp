@@ -12,7 +12,9 @@
 <sql:query var="query" dataSource="jdbc/Sklep">
     SELECT * FROM category
 </sql:query>
-
+<sql:query var="query2" dataSource="jdbc/Sklep">
+    SELECT * FROM product
+</sql:query>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,27 +23,77 @@
     </head>
     <body>
         <div id="main">
-        <h1>Dodaj produkt</h1>
+        <h1>Dodaj produkt:</h1>
         <form action="../Products/addproduct.jsp" method="POST">
                 <input type="submit" value="Dodaj">
         </form>
-        <h1>Edytuj produkty</h1> 
+        <h1>Edytuj produkty:</h1> 
         <form>
-            
+            <div class="dodawanie">
+                    Wybierz kategorię:
+                    <select name="category">
+                        <c:forEach var="prod" items="${query2.rows}">
+                            <option value="${prod.productID}" >${prod.name}</option>
+                        </c:forEach>
+                    </select>
+                     </br>
+                      </br>
+                    <input type="submit" value="Edytuj" />
+                     </br>
+                </div>
         </form>
-        <h1>Dodaj kategorie</h1>
+        <h1>Dodaj kategorie:</h1>
         <form action="../Products/insertProductCategoryToDb.jsp" method="POST">
             <div class="blok">
                 <div class="dodawanie">
-                    Nazwa nowej kategorii:
+                    <br>Nazwa nowej kategorii:
                     <input type="text" name="newCategory" value="" />
+                     </br>
+                      </br>
                     <input type="submit" value="Dodaj" />
+                    </br>
                 </div>
             </div>
         </form>
-        <h1>Edytuj kategorie</h1>
+        <h1>Usuń kategorie:</h1>
         <form action="#" method="POST">
-            
+        <form action="../Products/deleteProductCategoryToDb.jsp" method="POST">
+            <div class="blok">
+                <div class="dodawanie">
+                    Wybierz kategorię:
+                    <select name="category">
+                        <c:forEach var="kat" items="${query.rows}">
+                            <option value="${kat.categoryID}" >${kat.name}</option>
+                        </c:forEach>
+                    </select>
+                     </br>
+                      </br>
+                    <input type="submit" value="Usuń" />
+                     </br>
+                </div>
+            </div>
+        <h1>Edytuj nazwę kategorii:</h1>    
+        <form action="../Products/updateProductCategoryToDb.jsp" method="POST">
+            <div class="blok">
+                <div class="dodawanie">
+                    </br>
+                    Wybierz kategorię:
+                    <select name="category">
+                        <c:forEach var="kat" items="${query.rows}">
+                            <option value="${kat.categoryID}" >${kat.name}</option>
+                        </c:forEach>
+                    </select>
+                    </br>
+                    <br>Nowa nazwa:
+                    <input type="text" name="renameCategory" value="" />
+                     </br>
+                      </br>
+                    <input type="submit" value="Dodaj" />
+                    </br>
+                </div>
+            </div>
+        </form>    
+        </form>    
         </form>    
         </div>
     </body>

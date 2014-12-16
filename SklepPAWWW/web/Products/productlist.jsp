@@ -15,6 +15,7 @@
     <sql:param value="${param.id}"></sql:param>
 </sql:query>
 
+    
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,8 +24,8 @@
     <body>
         <div id="main">
             <h1>Kategoria / Podkategoria ...</h1>
+            <c:forEach var="row" items="${products.rows}">
             <div id="productlist">
-                <c:forEach var="row" items="${products.rows}">
                 <div id="smallimg">
                     <img  src="${row.imagePath}" style="height:120px;width:120px;" />
                 </div>
@@ -36,8 +37,9 @@
                     <br />
                     <span id="defaultContent_Label2">${row.price}</span>
                 </div>
-                </c:forEach>
+                
             </div>
+            </c:forEach>    
         <div/>
     </body>
 </html>

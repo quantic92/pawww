@@ -54,12 +54,13 @@
                     </select>
                     <br/>
                     <br/>
-                    <input type="file" name="image" id="fileSelector" style="height:21px;width:214px;" />
-                </div>
-                <div>
-                                                    <div class="dodawanie">
+                    <input type="file" name="image" id="fileSelector" value="brakzdjecia.gif" style="height:21px;width:214px;"></input>
+                    <br/> 
+                    <br/>
                     Ilość: <input type="text" name="quantity" value="" size="37" />
                 </div>
+                <div>
+                                                   
                 <br/>
                 <br/>
                 <br/>

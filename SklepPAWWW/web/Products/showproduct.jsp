@@ -34,8 +34,6 @@
                 </div>
 
                 <div id="main">
-
-
                     <span id="defaultContent_Label1">Cena:</span>
                     <br />
                     <span id="defaultContent_Label2">${query.rows[0].price}</span>
@@ -52,9 +50,11 @@
                     
                     <input type="hidden" name="product" value="${query.rows[0].productID}"
                 </div>
+                </div>
+                </div>
+             <div id="main">   
                 <br />
                 <br />
-             <div>   
                 <br />
                 <br />
                 <br />
@@ -70,7 +70,7 @@
                 <br/>
                 <br/>
              </div>  
-            </div>
+            
         </form>
     </body>
 </html>

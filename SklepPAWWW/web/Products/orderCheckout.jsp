@@ -55,11 +55,13 @@
                 <option value="paczkomat">Paczkomat</option>
                 <option value="osobisty">Odbiór osobisty</option>
             </select>
+            <h3>Rodzaj płatności:</h3>
             <select name="paymentType" id="orderType">
-                <option value="kurier" selected="true">Przelew bankowy</option>
-                <option value="paczkomat">Płatność gotówką</option>
-                <option value="osobisty">Przelew elektroniczny</option>
+                <option value="bankowy" selected="true">Przelew bankowy</option>
+                <option value="gotowka">Płatność gotówką</option>
+                <option value="elektroniczny">Przelew elektroniczny</option>
             </select>
+            </br>
             </br>
             <input type="submit" value="Zamawiam!" />
         </form>
