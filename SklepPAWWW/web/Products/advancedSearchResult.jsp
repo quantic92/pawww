@@ -30,7 +30,7 @@
     <c:when test="${empty param.name && not empty param.description}">
         <sql:query var="products" dataSource="jdbc/Sklep">
             SELECT *  FROM product p
-            AND description LIKE '%${param.description}%'
+            WHERE description LIKE '%${param.description}%'
             AND (price BETWEEN ${param.pricefrom} AND ${param.priceto})
             AND (quantity BETWEEN ${param.quantityfrom} AND ${param.quantityto})
         </sql:query>
@@ -38,7 +38,7 @@
     <c:otherwise>
         <sql:query var="products" dataSource="jdbc/Sklep">
             SELECT *  FROM product p
-            AND (price BETWEEN ${param.pricefrom} AND ${param.priceto})
+            WHERE (price BETWEEN ${param.pricefrom} AND ${param.priceto})
             AND (quantity BETWEEN ${param.quantityfrom} AND ${param.quantityto})
         </sql:query>
     </c:otherwise>

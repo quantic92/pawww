@@ -56,7 +56,6 @@
             </div>
         </form>
         <h1>Usuń kategorie:</h1>
-        <form action="#" method="POST">
         <form action="../Products/deleteProductCategoryToDb.jsp" method="POST">
             <div class="blok">
                 <div class="dodawanie">
@@ -73,7 +72,7 @@
                 </div>
             </div>
         <h1>Edytuj nazwę kategorii:</h1>    
-        <form action="../Products/updateProductCategoryToDb.jsp" method="POST">
+        <form action="/SklepPAWWW/Products/updateProductCategoryToDb.jsp" method="POST">
             <div class="blok">
                 <div class="dodawanie">
                     </br>
@@ -91,8 +90,7 @@
                     <input type="submit" value="Dodaj" />
                     </br>
                 </div>
-            </div>
-        </form>    
+            </div>   
         </form>    
         </form>    
         </div>

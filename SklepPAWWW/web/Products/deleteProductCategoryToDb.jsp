@@ -14,7 +14,7 @@
     </head>
     <body>
     <sql:update var="result" dataSource="jdbc/Sklep">
-        DELETE FROM category WHERE name=?
+        DELETE FROM category WHERE categoryID = ?
         <sql:param value="${param.category}" />
     </sql:update>
         <c:redirect url="../User/adminPanel.jsp"/>
