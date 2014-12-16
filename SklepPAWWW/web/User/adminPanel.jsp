@@ -15,6 +15,10 @@
 <sql:query var="query2" dataSource="jdbc/Sklep">
     SELECT * FROM product
 </sql:query>
+    
+
+
+    
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,10 +32,10 @@
                 <input type="submit" value="Dodaj">
         </form>
         <h1>Edytuj produkty:</h1> 
-        <form>
+        <form action="/SklepPAWWW/Products/editProduct.jsp" method="POST">
             <div class="dodawanie">
-                    Wybierz kategorię:
-                    <select name="category">
+                    Wybierz produkt:
+                    <select name="product">
                         <c:forEach var="prod" items="${query2.rows}">
                             <option value="${prod.productID}" >${prod.name}</option>
                         </c:forEach>
@@ -71,6 +75,7 @@
                      </br>
                 </div>
             </div>
+            </form> 
         <h1>Edytuj nazwę kategorii:</h1>    
         <form action="/SklepPAWWW/Products/updateProductCategoryToDb.jsp" method="POST">
             <div class="blok">
@@ -91,7 +96,7 @@
                     </br>
                 </div>
             </div>   
-        </form>    
+           
         </form>    
         </div>
     </body>

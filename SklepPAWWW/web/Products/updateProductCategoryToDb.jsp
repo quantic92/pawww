@@ -14,7 +14,7 @@
     </head>
     <body>
     <sql:update var="result" dataSource="jdbc/Sklep">
-        UPDATE category SET name=? WHERE name=?
+        UPDATE category SET name=? WHERE categoryID=?
         <sql:param value="${param.renameCategory}" />
         <sql:param value="${param.category}" />
     </sql:update>
